@@ -8,9 +8,13 @@ import ProjectsSection from "@/components/ProjectsSection";
 import AwardsSection from "@/components/AwardsSection";
 import EducationSection from "@/components/EducationSection";
 import Footer from "@/components/Footer";
+import { buildPersonJsonLd } from "@/lib/seo";
+
+const origin = (Astro.site ?? Astro.url.origin).toString();
+const jsonLd = buildPersonJsonLd(origin);
 ---
 
-<Layout>
+<Layout jsonLd={jsonLd}>
   <div class="sticky top-0 z-50">
     <GlassHeader client:load />
   </div>
