@@ -7,6 +7,13 @@ export function absoluteUrl(origin: string, pathname: string): string {
   return new URL(pathname, origin).href;
 }
 
+/** Serialize JSON-LD for embedding in a <script> tag without breaking out of it. */
+export function serializeJsonLd(
+  value: Record<string, unknown> | Record<string, unknown>[],
+): string {
+  return JSON.stringify(value).replace(/</g, "\\u003c");
+}
+
 export function buildPersonJsonLd(origin: string): Record<string, unknown> {
   const currentRole = workExperience[0];
 
