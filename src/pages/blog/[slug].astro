@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import GlassHeader from "@/components/GlassHeader";
 import Layout from "@/layouts/Layout.astro";
 import { formatPostDate, getPublishedPosts, type BlogPost } from "@/lib/blog";
+import { buildBlogPostingJsonLd } from "@/lib/seo";
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -20,6 +21,8 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const origin = (Astro.site ?? Astro.url.origin).toString();
+const jsonLd = buildBlogPostingJsonLd(origin, post);
 ---
 
 <Layout
@@ -27,6 +30,7 @@ const { Content } = await render(post);
   description={post.data.description}
   type="article"
   publishedTime={post.data.pubDate}
+  jsonLd={jsonLd}
   {...(post.data.updatedDate ? { updatedTime: post.data.updatedDate } : {})}
 >
   <div class="sticky top-0 z-50">
