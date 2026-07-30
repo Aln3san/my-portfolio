@@ -20,7 +20,7 @@ export function buildLlmsTxt(origin: string, posts: BlogPost[]): string {
     "",
     personalInfo.heroDescription,
     "",
-    "This site is the personal portfolio of Rishikesh S: background, selected work, skills, writing, and contact links.",
+    `This site is the personal portfolio of ${personalInfo.name}: background, selected work, skills, writing, and contact links.`,
   ];
 
   if (currentRole) {
@@ -36,44 +36,55 @@ export function buildLlmsTxt(origin: string, posts: BlogPost[]): string {
     `- [Home](${home}): Portfolio overview — experience, selected work, skills, awards, and education`,
     `- [Blog](${blog}): Writing and notes on software engineering`,
     `- [Resume](${resume}): PDF resume`,
-    "",
-    "## Skills",
   );
 
-  for (const group of skills) {
-    lines.push(`- [${group.label}](${skillsAnchor}): ${group.items.join(", ")}`);
+  if (skills.length > 0) {
+    lines.push("", "## Skills");
+
+    for (const group of skills) {
+      lines.push(`- [${group.label}](${skillsAnchor}): ${group.items.join(", ")}`);
+    }
   }
 
-  lines.push("", "## Selected work");
+  if (selectedWork.length > 0) {
+    lines.push("", "## Selected work");
 
-  for (const project of selectedWork) {
-    lines.push(
-      `- [${project.title}](${workAnchor}): ${project.summary} Stack: ${project.stack.join(", ")}.`,
-    );
+    for (const project of selectedWork) {
+      lines.push(
+        `- [${project.title}](${workAnchor}): ${project.summary} Stack: ${project.stack.join(", ")}.`,
+      );
+    }
   }
 
-  lines.push("", "## Experience");
+  if (workExperience.length > 0) {
+    lines.push("", "## Experience");
 
-  for (const job of workExperience) {
-    lines.push(
-      `- [${job.position} · ${job.company}](${experienceAnchor}): ${job.period}, ${job.location}. Stack: ${job.stack.join(", ")}.`,
-    );
+    for (const job of workExperience) {
+      lines.push(
+        `- [${job.position} · ${job.company}](${experienceAnchor}): ${job.period}, ${job.location}. Stack: ${job.stack.join(", ")}.`,
+      );
+    }
   }
 
   if (educationEntry) {
+    const highlights =
+      educationEntry.achievements.length > 0 ? ` ${educationEntry.achievements.join(" ")}` : "";
+
     lines.push(
       "",
       "## Education",
-      `- [${educationEntry.degree}](${educationAnchor}): ${educationEntry.institution}, ${educationEntry.location} (${educationEntry.period}). Department president, G20 student delegate, and hackathon competitor.`,
+      `- [${educationEntry.degree}](${educationAnchor}): ${educationEntry.institution}, ${educationEntry.location} (${educationEntry.period}).${highlights}`,
     );
   }
 
-  lines.push("", "## Awards");
+  if (awards.length > 0) {
+    lines.push("", "## Awards");
 
-  for (const award of awards) {
-    lines.push(
-      `- [${award.name}](${awardsAnchor}): ${award.position}, ${award.issuer} (${award.date}, ${award.type})`,
-    );
+    for (const award of awards) {
+      lines.push(
+        `- [${award.name}](${awardsAnchor}): ${award.position}, ${award.issuer} (${award.date}, ${award.type})`,
+      );
+    }
   }
 
   if (posts.length > 0) {
