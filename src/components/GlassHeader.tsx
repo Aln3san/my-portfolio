@@ -9,7 +9,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { AnimatePresence, domAnimation, LazyMotion, m, useReducedMotion } from "framer-motion";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const NAV_ITEMS = [
   { label: "Experience", href: "/#experience" },
@@ -24,6 +24,7 @@ export default function GlassHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
   const menuId = useId();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const toggleMenu = () => setIsMenuOpen((open) => !open);
   const closeMenu = () => setIsMenuOpen(false);
@@ -32,7 +33,9 @@ export default function GlassHeader() {
     if (!isMenuOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsMenuOpen(false);
+      if (event.key !== "Escape") return;
+      setIsMenuOpen(false);
+      menuButtonRef.current?.focus();
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -88,6 +91,7 @@ export default function GlassHeader() {
             <ThemeToggle />
 
             <button
+              ref={menuButtonRef}
               type="button"
               className="pressable inline-flex h-11 w-11 items-center justify-center text-foreground md:hidden"
               onClick={toggleMenu}
