@@ -81,18 +81,18 @@ export const selectedWork = [
       "Repository: https://github.com/Aln3san/bloodbank",
     ],
   },
-  {
-    title: "Quran Center LMS",
-    context: "Laravel LMS",
-    summary:
-      "Learning management system for a Quran teaching center with course and lesson management and an admin dashboard.",
-    stack: ["PHP", "Laravel", "MySQL", "Authentication", "Admin Dashboard"],
-    description: [
-      "Team lead role coordinating development of course and lesson management features.",
-      "Includes admin dashboard, user management, and certificate-related features as planned in the codebase.",
-      "Repository: https://github.com/Aln3san/quran-center",
-    ],
-  },
+  // {
+  //   title: "Quran Center LMS",
+  //   context: "Laravel LMS",
+  //   summary:
+  //     "Learning management system for a Quran teaching center with course and lesson management and an admin dashboard.",
+  //   stack: ["PHP", "Laravel", "MySQL", "Authentication", "Admin Dashboard"],
+  //   description: [
+  //     "Team lead role coordinating development of course and lesson management features.",
+  //     "Includes admin dashboard, user management, and certificate-related features as planned in the codebase.",
+  //     "Repository: https://github.com/Aln3san/quran-center",
+  //   ],
+  // },
   {
     title: "Feane",
     context: "Restaurant web application (frontend)",
@@ -113,6 +113,7 @@ export const selectedWork = [
     description: [
       "A learning platform implemented with Laravel covering courses, lessons, and role-based dashboards.",
       "Included as a past LMS project reflecting backend and application design work.",
+      "Demo: https://tsquarecenter.com",
     ],
   },
 ];

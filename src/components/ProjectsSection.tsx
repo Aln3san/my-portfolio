@@ -8,7 +8,7 @@ function ProjectArtwork({ index }: { index: number }) {
       <div className="relative aspect-4/3 overflow-hidden bg-acid text-ink" aria-hidden="true">
         <div className="absolute left-[9%] top-[11%] h-[72%] w-[53%] bg-coral" />
         <div className="absolute left-[6%] top-[8%] h-[72%] w-[53%] border-2 border-ink bg-[#fffdf5] p-[7%]">
-          <div className="font-display text-[clamp(1.05rem,4vw,2rem)] leading-none">EMPLOYEE</div>
+          <div className="font-display text-[clamp(1.05rem,4vw,2rem)] leading-none">Feane</div>
           <div className="mt-[10%] h-[3%] w-[72%] bg-ink/25" />
           <div className="mt-[6%] flex items-center gap-[5%]">
             <span className="h-[clamp(0.55rem,2vw,0.9rem)] w-[clamp(0.55rem,2vw,0.9rem)] border-2 border-ink bg-coral" />
@@ -23,13 +23,13 @@ function ProjectArtwork({ index }: { index: number }) {
             <span className="h-1 w-[52%] bg-ink/65" />
           </div>
           <div className="absolute bottom-[8%] left-[13%] bg-ink px-[6%] py-[3%] font-display text-[clamp(0.65rem,2.4vw,0.95rem)] text-white">
-            VALIDATED
+            ADD TO CART
           </div>
         </div>
         <div className="absolute left-[61%] top-1/2 h-1 w-[10%] -translate-y-1/2 bg-ink" />
         <div className="absolute left-[69%] top-1/2 h-0 w-0 -translate-y-1/2 border-y-[8px] border-l-[12px] border-y-transparent border-l-ink" />
         <div className="absolute right-[6%] top-[17%] grid w-[21%] gap-[10%]">
-          {["API", "PDF", "CSV"].map((format, formatIndex) => (
+          {["MENU", "CART", "PAY"].map((format, formatIndex) => (
             <div
               key={format}
               className={`border-2 border-ink px-[8%] py-[16%] text-center font-display text-[clamp(0.7rem,2.7vw,1.15rem)] ${
@@ -41,7 +41,7 @@ function ProjectArtwork({ index }: { index: number }) {
           ))}
         </div>
         <div className="absolute bottom-[6%] right-[6%] font-display text-[clamp(0.7rem,2.5vw,1rem)]">
-          FORM → INSURER
+          MENU → ORDER
         </div>
       </div>
     );
@@ -55,7 +55,7 @@ function ProjectArtwork({ index }: { index: number }) {
             <span className="h-[clamp(0.35rem,1.4vw,0.6rem)] w-[clamp(0.35rem,1.4vw,0.6rem)] rounded-full bg-coral" />
             <span className="h-[clamp(0.35rem,1.4vw,0.6rem)] w-[clamp(0.35rem,1.4vw,0.6rem)] rounded-full bg-acid" />
             <span className="h-[clamp(0.35rem,1.4vw,0.6rem)] w-[clamp(0.35rem,1.4vw,0.6rem)] rounded-full bg-ink" />
-            <span className="ml-auto font-display text-[clamp(0.6rem,2.2vw,0.9rem)]">MY STORE</span>
+            <span className="ml-auto font-display text-[clamp(0.6rem,2.2vw,0.9rem)]">T-square</span>
           </div>
           <div className="grid h-[86%] grid-cols-2 gap-[6%] p-[7%]">
             <div className="border-2 border-ink bg-acid p-[8%]">
@@ -105,14 +105,14 @@ function ProjectArtwork({ index }: { index: number }) {
         </div>
       </div>
       <div className="absolute right-[5%] top-[9%] grid w-[23%] gap-2 font-display text-[clamp(0.58rem,2.1vw,0.85rem)] text-ink">
-        <div className="bg-acid px-[8%] py-[12%] text-center">INPUT</div>
+        <div className="bg-acid px-[8%] py-[12%] text-center">DONOR</div>
         <div className="text-center text-acid">↓</div>
-        <div className="bg-coral px-[8%] py-[12%] text-center">RENDER</div>
+        <div className="bg-coral px-[8%] py-[12%] text-center">REQUEST</div>
         <div className="text-center text-acid">↓</div>
-        <div className="bg-[#fffdf5] px-[8%] py-[12%] text-center">PUBLISH</div>
+        <div className="bg-[#fffdf5] px-[8%] py-[12%] text-center">MATCH</div>
       </div>
       <div className="absolute bottom-[7%] right-[5%] font-display text-[clamp(0.7rem,2.5vw,1rem)] text-acid">
-        VIDEO WORKFLOW
+        DONOR → PATIENT
       </div>
     </div>
   );
