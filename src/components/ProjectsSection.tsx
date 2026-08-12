@@ -148,7 +148,7 @@ export default function ProjectsSection() {
                   <p className="mb-3 text-sm font-black uppercase tracking-wide text-ember">
                     {project.context}
                   </p>
-                  <h3 className="font-display text-[clamp(2.5rem,6vw,4.75rem)] leading-[0.92]">
+                  <h3 className="font-display text-[clamp(2.5rem,6vw,4.75rem)] leading-[0.92] tracking-[-0.02em]">
                     {project.title}
                   </h3>
                   <p className="mt-5 text-lg leading-relaxed text-muted-foreground">

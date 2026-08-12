@@ -8,7 +8,9 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <div className="flex flex-col gap-8 border-t-2 border-ink pt-7 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-display text-4xl md:text-6xl">{personalInfo.name}</p>
+            <p className="font-display text-4xl tracking-[-0.02em] md:text-6xl">
+              {personalInfo.name}
+            </p>
             <p className="mt-2 text-sm font-semibold text-ink/70">
               Building reliable products from idea to production.
             </p>
@@ -17,7 +19,7 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <a
               href={`mailto:${personalInfo.email}`}
-              className="inline-flex h-11 w-11 items-center justify-center border border-ink/50 text-ink transition-colors hover:bg-ink hover:text-white"
+              className="pressable inline-flex h-11 w-11 items-center justify-center border border-ink/50 text-ink transition-colors duration-150 hover:bg-ink hover:text-white"
               aria-label="Email"
             >
               <HugeiconsIcon
@@ -31,7 +33,7 @@ export default function Footer() {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 w-11 items-center justify-center border border-ink/50 text-ink transition-colors hover:bg-ink hover:text-white"
+              className="pressable inline-flex h-11 w-11 items-center justify-center border border-ink/50 text-ink transition-colors duration-150 hover:bg-ink hover:text-white"
               aria-label="GitHub"
             >
               <HugeiconsIcon
@@ -45,7 +47,7 @@ export default function Footer() {
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 w-11 items-center justify-center border border-ink/50 text-ink transition-colors hover:bg-ink hover:text-white"
+              className="pressable inline-flex h-11 w-11 items-center justify-center border border-ink/50 text-ink transition-colors duration-150 hover:bg-ink hover:text-white"
               aria-label="LinkedIn"
             >
               <HugeiconsIcon
