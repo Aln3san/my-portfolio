@@ -20,6 +20,18 @@ const NAV_ITEMS = [
   { label: "Blog", href: "/blog/" },
 ] as const;
 
+const DESKTOP_NAV_QUERY = "(min-width: 768px)";
+
+function isVisible(element: HTMLElement) {
+  return typeof element.checkVisibility === "function"
+    ? element.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true })
+    : element.getClientRects().length > 0;
+}
+
+function focusIfVisible(element: HTMLElement | null) {
+  if (element && isVisible(element)) element.focus();
+}
+
 export default function GlassHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const reduceMotion = useReducedMotion();
@@ -30,12 +42,26 @@ export default function GlassHeader() {
   const closeMenu = () => setIsMenuOpen(false);
 
   useEffect(() => {
+    const media = window.matchMedia(DESKTOP_NAV_QUERY);
+    const closeOnDesktop = () => {
+      if (!media.matches) return;
+      setIsMenuOpen(false);
+      const active = document.activeElement;
+      if (active instanceof HTMLElement && !isVisible(active)) active.blur();
+    };
+
+    closeOnDesktop();
+    media.addEventListener("change", closeOnDesktop);
+    return () => media.removeEventListener("change", closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
     if (!isMenuOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       setIsMenuOpen(false);
-      menuButtonRef.current?.focus();
+      focusIfVisible(menuButtonRef.current);
     };
 
     window.addEventListener("keydown", onKeyDown);
