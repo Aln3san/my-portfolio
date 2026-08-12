@@ -37,6 +37,7 @@ export default function GlassHeader() {
   const reduceMotion = useReducedMotion();
   const menuId = useId();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const desktopNavRef = useRef<HTMLElement>(null);
 
   const toggleMenu = () => setIsMenuOpen((open) => !open);
   const closeMenu = () => setIsMenuOpen(false);
@@ -45,9 +46,12 @@ export default function GlassHeader() {
     const media = window.matchMedia(DESKTOP_NAV_QUERY);
     const closeOnDesktop = () => {
       if (!media.matches) return;
-      setIsMenuOpen(false);
       const active = document.activeElement;
-      if (active instanceof HTMLElement && !isVisible(active)) active.blur();
+      const lostVisibleFocus = active instanceof HTMLElement && !isVisible(active);
+      setIsMenuOpen(false);
+      if (!lostVisibleFocus) return;
+      const desktopLink = desktopNavRef.current?.querySelector<HTMLElement>("a[href]");
+      focusIfVisible(desktopLink ?? null);
     };
 
     closeOnDesktop();
@@ -85,6 +89,7 @@ export default function GlassHeader() {
           </a>
 
           <nav
+            ref={desktopNavRef}
             className="hidden items-center gap-6 text-sm font-medium md:flex"
             aria-label="Primary"
           >
