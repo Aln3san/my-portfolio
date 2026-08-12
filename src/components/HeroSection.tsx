@@ -12,21 +12,10 @@ import type { PointerEvent as ReactPointerEvent } from "react";
 import HeroCanvas from "./HeroCanvas";
 
 const contactLinks = [
-  {
-    label: "View resume",
-    href: personalInfo.resume,
-    icon: DocumentAttachmentIcon,
-    external: true,
-    primary: true,
-  },
+  { label: "View Projects", href: "#work", icon: DocumentAttachmentIcon, primary: true },
   { label: "Email", href: `mailto:${personalInfo.email}`, icon: Mail01Icon },
   { label: "GitHub", href: personalInfo.github, icon: GithubIcon, external: true },
-  {
-    label: "LinkedIn",
-    href: personalInfo.linkedin,
-    icon: Linkedin01Icon,
-    external: true,
-  },
+  { label: "LinkedIn", href: personalInfo.linkedin, icon: Linkedin01Icon, external: true },
 ];
 
 const movePortraitReveal = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -72,14 +61,14 @@ export default function HeroSection() {
               variants={reveal}
             >
               <span className="h-3 w-3 bg-coral" aria-hidden="true" />
-              Software Engineer
+              Backend Developer
             </m.div>
 
             <m.h1
               className="font-display whitespace-nowrap text-[clamp(2.5rem,11vw,5.5rem)] leading-[0.88] tracking-[-0.02em] md:text-[clamp(3.8rem,6.5vw,5.5rem)]"
               variants={reveal}
             >
-              Rishikesh <span className="text-coral">S.</span>
+              {personalInfo.name}
             </m.h1>
 
             <m.p

@@ -105,20 +105,22 @@ export default function GlassHeader() {
           </nav>
 
           <div className="flex items-center gap-1 text-foreground">
-            <a
-              href={personalInfo.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="pressable hidden min-h-10 items-center gap-2 border border-foreground/35 px-3 text-sm font-bold text-muted-foreground transition-colors duration-150 hover:border-foreground hover:bg-foreground hover:text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground md:inline-flex"
-            >
-              <HugeiconsIcon
-                icon={DocumentAttachmentIcon}
-                className="h-4 w-4"
-                strokeWidth={2}
-                aria-hidden="true"
-              />
-              Resume
-            </a>
+            {personalInfo.resume && (
+              <a
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pressable hidden min-h-10 items-center gap-2 border border-foreground/35 px-3 text-sm font-bold text-muted-foreground transition-colors duration-150 hover:border-foreground hover:bg-foreground hover:text-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground md:inline-flex"
+              >
+                <HugeiconsIcon
+                  icon={DocumentAttachmentIcon}
+                  className="h-4 w-4"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                Resume
+              </a>
+            )}
             <ThemeToggle />
 
             <button
@@ -165,24 +167,26 @@ export default function GlassHeader() {
                     {item.label}
                   </a>
                 ))}
-                <a
-                  href={personalInfo.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="pressable flex min-h-14 items-center justify-between border-b border-ink/30 text-ink"
-                  onClick={closeMenu}
-                >
-                  <span>Resume</span>
-                  <span className="flex items-center gap-1.5 bg-ink px-2.5 py-1.5 font-sans text-xs font-black tracking-normal text-white">
-                    PDF
-                    <HugeiconsIcon
-                      icon={ArrowUpRight01Icon}
-                      className="h-3.5 w-3.5"
-                      strokeWidth={2}
-                      aria-hidden="true"
-                    />
-                  </span>
-                </a>
+                {personalInfo.resume && (
+                  <a
+                    href={personalInfo.resume}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pressable flex min-h-14 items-center justify-between border-b border-ink/30 text-ink"
+                    onClick={closeMenu}
+                  >
+                    <span>Resume</span>
+                    <span className="flex items-center gap-1.5 bg-ink px-2.5 py-1.5 font-sans text-xs font-black tracking-normal text-white">
+                      PDF
+                      <HugeiconsIcon
+                        icon={ArrowUpRight01Icon}
+                        className="h-3.5 w-3.5"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </a>
+                )}
               </nav>
             </m.div>
           ) : null}
