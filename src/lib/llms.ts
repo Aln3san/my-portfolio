@@ -1,5 +1,5 @@
 import type { BlogPost } from "@/lib/blog";
-import { awards, education, personalInfo, selectedWork, skills, workExperience } from "@/lib/data";
+import { education, personalInfo, selectedWork, skills, workExperience } from "@/lib/data";
 import { absoluteUrl, DEFAULT_SITE_DESCRIPTION } from "@/lib/seo";
 
 export function buildLlmsTxt(origin: string, posts: BlogPost[]): string {
@@ -9,7 +9,6 @@ export function buildLlmsTxt(origin: string, posts: BlogPost[]): string {
   const experienceAnchor = absoluteUrl(origin, "/#experience");
   const workAnchor = absoluteUrl(origin, "/#work");
   const skillsAnchor = absoluteUrl(origin, "/#skills");
-  const awardsAnchor = absoluteUrl(origin, "/#awards");
   const educationAnchor = absoluteUrl(origin, "/#education");
   const currentRole = workExperience[0];
   const educationEntry = education[0];
@@ -33,7 +32,7 @@ export function buildLlmsTxt(origin: string, posts: BlogPost[]): string {
   lines.push(
     "",
     "## Pages",
-    `- [Home](${home}): Portfolio overview — experience, selected work, skills, awards, and education`,
+    `- [Home](${home}): Portfolio overview — experience, selected work, skills, and education`,
     `- [Blog](${blog}): Writing and notes on software engineering`,
     `- [Resume](${resume}): PDF resume`,
   );
@@ -67,24 +66,14 @@ export function buildLlmsTxt(origin: string, posts: BlogPost[]): string {
   }
 
   if (educationEntry) {
-    const highlights =
-      educationEntry.achievements.length > 0 ? ` ${educationEntry.achievements.join(" ")}` : "";
+    const achievements = educationEntry.achievements ?? [];
+    const highlights = achievements.length > 0 ? ` ${achievements.join(" ")}` : "";
 
     lines.push(
       "",
       "## Education",
       `- [${educationEntry.degree}](${educationAnchor}): ${educationEntry.institution}, ${educationEntry.location} (${educationEntry.period}).${highlights}`,
     );
-  }
-
-  if (awards.length > 0) {
-    lines.push("", "## Awards");
-
-    for (const award of awards) {
-      lines.push(
-        `- [${award.name}](${awardsAnchor}): ${award.position}, ${award.issuer} (${award.date}, ${award.type})`,
-      );
-    }
   }
 
   if (posts.length > 0) {

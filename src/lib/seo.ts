@@ -1,7 +1,8 @@
 import type { BlogPost } from "@/lib/blog";
 import { personalInfo, workExperience } from "@/lib/data";
 
-export const DEFAULT_SITE_DESCRIPTION = "Anas Aln3san — Backend Developer specializing in PHP, Laravel, APIs, and backend systems.";
+export const DEFAULT_SITE_DESCRIPTION =
+  "Anas Aln3san — Backend Developer specializing in PHP, Laravel, APIs, and backend systems.";
 
 export function absoluteUrl(origin: string, pathname: string): string {
   return new URL(pathname, origin).href;

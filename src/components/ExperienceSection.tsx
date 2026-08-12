@@ -12,8 +12,7 @@ export default function ExperienceSection() {
         </MotionWrapper>
         <MotionWrapper>
           <p className="mb-12 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
-            I work across the full product lifecycle: understanding the problem, designing the data,
-            building the feature, testing it, shipping it, and supporting it in production.
+            I’m focused on the part of an application users don’t see: the backend. I build with PHP and Laravel, working with databases, REST APIs, authentication, and business logic to turn requirements into working features. I care about how the pieces fit together — keeping the code structured, the data consistent, and the system easy to build on as the project grows.
           </p>
         </MotionWrapper>
         <div>
@@ -26,14 +25,16 @@ export default function ExperienceSection() {
               isLast={index === workExperience.length - 1}
               index={index}
             >
-              <ul className="mt-6 grid gap-3 text-sm text-muted-foreground lg:grid-cols-2">
-                {job.achievements.map((achievement) => (
-                  <li key={achievement} className="flex gap-3 leading-relaxed">
-                    <span className="mt-[7px] h-2 w-2 shrink-0 bg-coral" aria-hidden="true" />
-                    <span>{achievement}</span>
-                  </li>
-                ))}
-              </ul>
+              {job.achievements && job.achievements.length > 0 && (
+                <ul className="mt-6 grid gap-3 text-sm text-muted-foreground lg:grid-cols-2">
+                  {job.achievements.map((achievement) => (
+                    <li key={achievement} className="flex gap-3 leading-relaxed">
+                      <span className="mt-[7px] h-2 w-2 shrink-0 bg-coral" aria-hidden="true" />
+                      <span>{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               <ul
                 className="mt-5 flex flex-wrap gap-2"
                 aria-label={`${job.company} technology stack`}

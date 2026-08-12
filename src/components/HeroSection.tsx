@@ -13,7 +13,12 @@ import HeroCanvas from "./HeroCanvas";
 
 const contactLinks = [
   { label: "View Projects", href: "#work", icon: DocumentAttachmentIcon, primary: true },
-  { label: "Download CV", href: "/cv/lastes_cv_Anas_Alnaasan_Back-End Developer_resume.pdf", icon: DocumentAttachmentIcon, download: true },
+  {
+    label: "Download CV",
+    href: "/cv/lastes_cv_Anas_Alnaasan_Back-End Developer_resume.pdf",
+    icon: DocumentAttachmentIcon,
+    download: true,
+  },
   { label: "Email", href: `mailto:${personalInfo.email}`, icon: Mail01Icon },
   { label: "GitHub", href: personalInfo.github, icon: GithubIcon, external: true },
   { label: "LinkedIn", href: personalInfo.linkedin, icon: Linkedin01Icon, external: true },

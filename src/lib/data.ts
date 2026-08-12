@@ -1,3 +1,26 @@
+export type WorkExperienceEntry = {
+  position: string;
+  company: string;
+  period: string;
+  location: string;
+  stack: string[];
+  achievements?: string[];
+};
+
+export type EducationEntry = {
+  degree: string;
+  institution: string;
+  location: string;
+  period: string;
+  achievements?: string[];
+};
+
+export type HackathonEntry = {
+  name: string;
+  date: string;
+  description?: string;
+};
+
 export const personalInfo = {
   name: "Anas Aln3san",
   email: "anas.aln3san@gmail.com",
@@ -10,18 +33,19 @@ export const personalInfo = {
     "I build APIs, backend systems, and the business logic that powers web applications. My focus is on PHP and Laravel-based backends, databases, authentication, and delivering maintainable server-side systems.",
 };
 
-export const workExperience: any[] = [];
+export const workExperience: WorkExperienceEntry[] = [];
 
-export const education: any[] = [
+export const education: EducationEntry[] = [
   {
     degree: "Middle School Student",
     institution: "Mansoura Preparatory School for Boys",
     location: "Mansoura, Dakahlia, Egypt",
     period: "September 2026 - Present",
+    achievements: [],
   },
 ];
 
-export const hackathons: any[] = [
+export const hackathons: HackathonEntry[] = [
   {
     name: "Red Dev Hackathon",
     date: "August 2026",
@@ -48,7 +72,8 @@ export const selectedWork = [
   {
     title: "BloodBank",
     context: "Laravel Backend / API",
-    summary: "A Laravel-based backend API for blood bank management providing authentication and core API endpoints.",
+    summary:
+      "A Laravel-based backend API for blood bank management providing authentication and core API endpoints.",
     stack: ["PHP", "Laravel", "MySQL", "REST API", "Authentication"],
     description: [
       "Backend/API project focused on building RESTful endpoints and authentication flows.",
@@ -59,7 +84,8 @@ export const selectedWork = [
   {
     title: "Quran Center LMS",
     context: "Laravel LMS",
-    summary: "Learning management system for a Quran teaching center with course and lesson management and an admin dashboard.",
+    summary:
+      "Learning management system for a Quran teaching center with course and lesson management and an admin dashboard.",
     stack: ["PHP", "Laravel", "MySQL", "Authentication", "Admin Dashboard"],
     description: [
       "Team lead role coordinating development of course and lesson management features.",
@@ -70,7 +96,8 @@ export const selectedWork = [
   {
     title: "Feane",
     context: "Restaurant web application (frontend)",
-    summary: "A restaurant website and frontend built with React; included here as a supporting/frontend project alongside backend work.",
+    summary:
+      "A restaurant website and frontend built with React; included here as a supporting/frontend project alongside backend work.",
     stack: ["React", "HTML", "CSS", "API integration"],
     description: [
       "Frontend-focused project demonstrating integration with APIs and responsive UI.",
@@ -80,7 +107,8 @@ export const selectedWork = [
   {
     title: "T-Square LMS",
     context: "Laravel LMS",
-    summary: "An LMS project with authentication, course and student dashboards and admin features.",
+    summary:
+      "An LMS project with authentication, course and student dashboards and admin features.",
     stack: ["PHP", "Laravel", "MySQL", "Authentication", "Courses"],
     description: [
       "A learning platform implemented with Laravel covering courses, lessons, and role-based dashboards.",
@@ -88,5 +116,3 @@ export const selectedWork = [
     ],
   },
 ];
-
-export const awards: any[] = [];

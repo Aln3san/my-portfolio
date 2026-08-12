@@ -3,10 +3,12 @@
 هذا الملف يشرح بالتفصيل كيفية تعديل المحتوى والبيانات الأساسية في هذا الـportfolio المبني على Astro + React + Tailwind (باستخدام Bun كـpackage manager). مذكور أين توجد القيم الملفوفة وما تغيّر لتخصيص الموقع لِـAnas.
 
 ملاحظات عامة
+
 - لا حاجة لتعديل الملفات داخل مجلد `.astro/` أو `dist/` أو ملفات المولدات الأخرى.
 - استخدم `bun` كما هو محدد في المشروع (لا تغيّر package manager).
 
 أوامر تشغيل وبناء
+
 - تثبيت الحزم:
   bun install
 - تشغيل بيئة التطوير:
@@ -28,6 +30,7 @@
 
 ملف: `src/lib/data.ts`
 هذا الملف يحتوي على كائنات قابلة للتعديل مثل:
+
 - `personalInfo` — الاسم، البريد، GitHub، LinkedIn، profile picture، hero text
 - `workExperience` — خبرات العمل (في هذا الإصدار تم إفراغها لأنك لم تزود بيانات العمل)
 - `education` — التعليم (فارغ هنا)
@@ -37,23 +40,27 @@
 
 كيفية تغيير:
 
-1) تغيير اسمي
+1. تغيير اسمي
+
 - الملف: `src/lib/data.ts`
 - المفتاح: `personalInfo.name`
 - مثال: `name: "Anas Aln3san",`
 
-2) تغيير نص الـHero
+2. تغيير نص الـHero
+
 - الملف: `src/lib/data.ts`
 - المفتاح: `personalInfo.heroDescription`
 - يفضل كتابة جملة قصيرة ومهنية تذكر فيها أنك "build APIs, backend systems, ...".
 
-3) تغيير About (الفقرة التمهيدية في قسم الخبرة)
+3. تغيير About (الفقرة التمهيدية في قسم الخبرة)
+
 - الملف: `src/components/ExperienceSection.tsx`
 - النص الافتراضي في أعلى القسم مأخوذ من داخل المكون. لتعديله بسرعة يمكنك:
   - تعديل السطر في `ExperienceSection.tsx` عند الفقرة الأولى (البيان النصي تحت عنوان "Work Experience")
   - أو وضع نص مختصر في `src/lib/data.ts` وإنشاء حقل جديد لربطه إن أردت (الحل البسيط: تعديل `ExperienceSection.tsx`).
 
-4) إضافة مشروع جديد
+4. إضافة مشروع جديد
+
 - الملف: `src/lib/data.ts`
 - المصفوفة: `selectedWork`
 - كل مشروع ككائن يحتوي على المفاتيح التالية:
@@ -65,57 +72,71 @@
   - (اختياري) أضف رابط GitHub داخل `description` أو ضمن نص الـsummary؛ لا تنشئ أزرار Live Demo إذا لم يكن موجودًا
 - بعد التعديل احفظ ثم شغّل `bun run dev` وتأكد أن القسم يظهر بشكلٍ صحيح.
 
-5) حذف مشروع
+5. حذف مشروع
+
 - احذف الكائن المطلوب من مصفوفة `selectedWork` في `src/lib/data.ts`، ثم حفظ وإعادة تحميل الصفحة.
 
-6) تعديل مشروع موجود
+6. تعديل مشروع موجود
+
 - افتح `src/lib/data.ts` وعدّل الحقول في كائن المشروع.
 
-7) تغيير رابط GitHub
+7. تغيير رابط GitHub
+
 - الملف: `src/lib/data.ts` — في `personalInfo.github` غيّر الرابط
 - بعض المكونات قد تعرض روابط المشاريع ضمن `selectedWork`; حرّر هناك أيضاً.
 
-8) تغيير LinkedIn
+8. تغيير LinkedIn
+
 - الملف: `src/lib/data.ts` — في `personalInfo.linkedin`
 
-9) تغيير Email
+9. تغيير Email
+
 - الملف: `src/lib/data.ts` — في `personalInfo.email`
 
-10) تغيير Tech Stack
+10. تغيير Tech Stack
+
 - الملف: `src/lib/data.ts` — في المصفوفة `skills` عدّل أو أضف مجموعات وتقنيات
 
-11) تغيير ألوان الموقع
+11. تغيير ألوان الموقع
+
 - الألوان مُدارة عبر ملفات CSS / Tailwind الموجودة داخل المشروع (الافتراضي في `src/styles` وملفات Tailwind config إذا وُجِدت).
 - سريع: ابحث في `src/styles` وملفات `tailwind.config` (إن وُجدت) — لكن في هذا القالب معظم الألوان تأتي من متغيرات CSS.
 - إن أردت تغيير لون رئيسي (مثل `--coral` أو `--hero-background`) ابحث عنها في ملفات CSS داخل `src/styles` وعدّل القيمة.
 
-12) تغيير الخطوط
+12. تغيير الخطوط
+
 - تحقق من ملفات الـCSS في `src/styles` حيث تُعرّف قواعد الخطوط. يمكن تعديل استدعاء الخطوط في `src/layouts` أو ملف CSS الرئيسي.
 
-13) تغيير Navbar
+13. تغيير Navbar
+
 - الملف: `src/components/GlassHeader.tsx`
 - اسم العرض في أعلى الملف يُعرض من `personalInfo.name` لذلك لتغييره عدّل `src/lib/data.ts` أو غيّر النص هنا.
 - لإضافة/حذف روابط التنقل عدّل الثابت `NAV_ITEMS` داخل `GlassHeader.tsx`.
 
-14) تغيير Footer
+14. تغيير Footer
+
 - الملف: `src/components/Footer.tsx`
 - يحتوي على روابط التواصل وسنقوم بتعديل البيانات من `src/lib/data.ts` حيثما أمكن.
 
-15) إضافة/تغيير صورة شخصية
+15. إضافة/تغيير صورة شخصية
+
 - المسار الافتراضي: `public/profile.jpg`
 - لاستبدال الصورة: ضع اسم الملف الجديد داخل `public/` ثم عدّل `personalInfo.profilePicture` في `src/lib/data.ts` إلى المسار (مثال: `/me.jpg`).
 - تأكد من أن الصورة ليست كبيرة جدًا للحفاظ على سرعة التحميل.
 
-16) تشغيل المشروع محليًا
+16. تشغيل المشروع محليًا
+
 - تعليمات التشغيل: انظر أعلى الملف (الأوامر)
   - bun install
   - bun run dev
 
-17) عمل production build
+17. عمل production build
+
 - bun run build
 - bun run preview (لمعاينة)
 
-18) أهم المكونات (أين توجد):
+18. أهم المكونات (أين توجد):
+
 - Layout component: `src/layouts/Layout.astro`
 - Hero: `src/components/HeroSection.tsx`
 - Header / Navbar: `src/components/GlassHeader.tsx`
@@ -126,16 +147,19 @@
 - البيانات المركزية: `src/lib/data.ts`
 - SEO helpers: `src/lib/seo.ts`
 
-19) تغيير صورة في Header (Portrait)
+19. تغيير صورة في Header (Portrait)
+
 - الملف: `src/lib/data.ts` — حقل `personalInfo.profilePicture`
 - ضع الصورة داخل مجلد `public/` ثم حدّث القيمة (مثال: `/my-photo.jpg`).
 
 ملاحظات عن التخصيص والتصميم
+
 - لا تضف معلومات زائفة (خبرات، سنوات، عملاء، شهادات) — هذا الأمر متعمد هنا.
 - الحفاظ على الـfocus على Backend: عند كتابة وصف المشاريع استخدم مصطلحات Backend (API, DB, Authentication, Laravel, PHP).
 - عند إضافة روابط GitHub، ضع الروابط الحقيقية فقط.
 
 أخيرًا
+
 - إن احتجت مساعدة في إضافة مشروع أو رفع صورة أو تنسيق محتوى الـAbout، اذكر ما تريد تحديدًا وسأقوم بالتغيير.
 
 ---
