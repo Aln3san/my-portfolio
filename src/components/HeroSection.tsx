@@ -1,4 +1,5 @@
 import { personalInfo } from "@/lib/data";
+import { REDUCED_MOTION_TRANSITION, UI_SPRING } from "@/lib/motion";
 import {
   DocumentAttachmentIcon,
   GithubIcon,
@@ -9,8 +10,6 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { domAnimation, LazyMotion, m, useReducedMotion } from "framer-motion";
 import type { PointerEvent as ReactPointerEvent } from "react";
 import HeroCanvas from "./HeroCanvas";
-
-const EASE_OUT_QUINT = [0.22, 1, 0.36, 1] as const;
 
 const contactLinks = [
   {
@@ -44,14 +43,11 @@ const hidePortraitReveal = (event: ReactPointerEvent<HTMLDivElement>) => {
 export default function HeroSection() {
   const reduceMotion = useReducedMotion();
   const reveal = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 28 },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 22 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: reduceMotion ? 0.15 : 0.75,
-        ease: EASE_OUT_QUINT,
-      },
+      transition: reduceMotion ? REDUCED_MOTION_TRANSITION : UI_SPRING,
     },
   };
 
@@ -66,8 +62,8 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           transition={{
-            staggerChildren: reduceMotion ? 0 : 0.09,
-            delayChildren: reduceMotion ? 0 : 0.08,
+            staggerChildren: reduceMotion ? 0 : 0.07,
+            delayChildren: reduceMotion ? 0 : 0.04,
           }}
         >
           <div className="min-w-0">
@@ -80,7 +76,7 @@ export default function HeroSection() {
             </m.div>
 
             <m.h1
-              className="font-display whitespace-nowrap text-[clamp(2.5rem,11vw,5.5rem)] leading-[0.88] tracking-[0.01em] md:text-[clamp(3.8rem,6.5vw,5.5rem)]"
+              className="font-display whitespace-nowrap text-[clamp(2.5rem,11vw,5.5rem)] leading-[0.88] tracking-[-0.02em] md:text-[clamp(3.8rem,6.5vw,5.5rem)]"
               variants={reveal}
             >
               Rishikesh <span className="text-coral">S.</span>
@@ -99,7 +95,7 @@ export default function HeroSection() {
                   key={label}
                   href={href}
                   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className={`group inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold transition-transform duration-300 ease-out hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground ${
+                  className={`pressable group inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground ${
                     primary
                       ? "bg-coral text-ink"
                       : "border border-hero-foreground/45 bg-hero-background/30 text-hero-foreground hover:border-hero-foreground hover:bg-hero-foreground hover:text-hero-background"
