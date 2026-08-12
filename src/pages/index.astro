@@ -6,6 +6,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import AwardsSection from "@/components/AwardsSection";
+import HackathonsSection from "@/components/HackathonsSection";
 import EducationSection from "@/components/EducationSection";
 import Footer from "@/components/Footer";
 import { buildPersonJsonLd } from "@/lib/seo";
@@ -22,6 +23,7 @@ const jsonLd = buildPersonJsonLd(origin);
     <ProjectsSection client:load />
     <SkillsSection client:load />
     <AwardsSection client:load />
+    <HackathonsSection client:load />
     <EducationSection client:load />
   </main>
   <Footer client:load />

@@ -13,6 +13,7 @@ import HeroCanvas from "./HeroCanvas";
 
 const contactLinks = [
   { label: "View Projects", href: "#work", icon: DocumentAttachmentIcon, primary: true },
+  { label: "Download CV", href: "/cv/lastes_cv_Anas_Alnaasan_Back-End Developer_resume.pdf", icon: DocumentAttachmentIcon, download: true },
   { label: "Email", href: `mailto:${personalInfo.email}`, icon: Mail01Icon },
   { label: "GitHub", href: personalInfo.github, icon: GithubIcon, external: true },
   { label: "LinkedIn", href: personalInfo.linkedin, icon: Linkedin01Icon, external: true },
@@ -79,11 +80,13 @@ export default function HeroSection() {
             </m.p>
 
             <m.div className="mt-7 flex flex-wrap gap-2.5" variants={reveal}>
-              {contactLinks.map(({ label, href, icon: Icon, external, primary }) => (
+              {contactLinks.map(({ label, href, icon: Icon, external, primary, download }) => (
                 <a
                   key={label}
                   href={href}
+                  aria-label={label}
                   {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  {...(download ? { download: "" } : {})}
                   className={`pressable group inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hero-foreground ${
                     primary
                       ? "bg-coral text-ink"

@@ -3,15 +3,32 @@ export const personalInfo = {
   email: "anas.aln3san@gmail.com",
   github: "https://github.com/Aln3san",
   linkedin: "https://www.linkedin.com/in/anasaln3san",
-  resume: "",
-  profilePicture: "/profile.jpg",
+  // Point to the CV placed in the public folder (used by header/resume links)
+  resume: "/cv/lastes_cv_Anas_Alnaasan_Back-End Developer_resume.pdf",
+  profilePicture: "/profile-2.jpeg",
   heroDescription:
     "I build APIs, backend systems, and the business logic that powers web applications. My focus is on PHP and Laravel-based backends, databases, authentication, and delivering maintainable server-side systems.",
 };
 
 export const workExperience: any[] = [];
 
-export const education: any[] = [];
+export const education: any[] = [
+  {
+    degree: "Middle School Student",
+    institution: "Mansoura Preparatory School for Boys",
+    location: "Mansoura, Dakahlia, Egypt",
+    period: "September 2026 - Present",
+  },
+];
+
+export const hackathons: any[] = [
+  {
+    name: "Red Dev Hackathon",
+    date: "August 2026",
+    description: "Participated in the hackathon as part of a team.",
+  },
+];
+
 export const skills = [
   {
     label: "Backend",

@@ -7,7 +7,7 @@ export default function EducationSection() {
     <section id="education" className="scroll-mt-16 bg-background py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-8">
         <MotionWrapper>
-          <SectionHeading>Education & Leadership</SectionHeading>
+          <SectionHeading>Education</SectionHeading>
         </MotionWrapper>
 
         <div>

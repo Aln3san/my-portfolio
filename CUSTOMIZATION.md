@@ -137,3 +137,46 @@
 
 أخيرًا
 - إن احتجت مساعدة في إضافة مشروع أو رفع صورة أو تنسيق محتوى الـAbout، اذكر ما تريد تحديدًا وسأقوم بالتغيير.
+
+---
+
+## تحميل الـCV (ملف PDF)
+
+- مكان الملف داخل المشروع: `public/cv/lastes_cv_Anas_Alnaasan_Back-End Developer_resume.pdf`
+  - تم وضع نسخة من الـCV داخل مجلد `public/cv/`، وهذا يضمن أن الملف سيكون متاحًا بعد عملية البناء (production build).
+- كيف يستعمل الموقع الملف:
+  - رابط التحميل في الـHero يظهر كزر "Download CV" ويشير إلى المسار أعلاه ويستخدم خاصية `download` ليؤدي إلى تنزيل الملف بدلاً من فتحه.
+  - كما تم ضبط الحقل `personalInfo.resume` في `src/lib/data.ts` إلى نفس المسار ليظهر رابط "Resume" في الـheader.
+- إذا أردت استبدال الملف بملف جديد:
+  1. انسخ الملف الجديد إلى مجلد `public/cv/` بنفس الاسم أو احذف/أعد تسمية الملف القديم ثم ضع الملف الجديد.
+  2. إن غيرت اسم الملف، حدّث المسار في `src/lib/data.ts` (الحقل `personalInfo.resume`) وإذا رغبت بتغيير سلوك التحميل أو اسم الزر قم بتعديل `src/components/HeroSection.tsx`.
+
+## Education (أين تُعدل بيانات التعليم)
+
+- الملف المسؤول عن بيانات التعليم: `src/lib/data.ts`
+  - افتح الملف وابحث عن المصفوفة `education`.
+  - تحتوي كل مدخلة تعليمية على الحقول: `degree`, `institution`, `location`, `period`, (اختياري) `achievements`.
+  - المثال المُضاف من الـCV:
+    - degree: "Middle School Student"
+    - institution: "Mansoura Preparatory School for Boys"
+    - location: "Mansoura, Dakahlia, Egypt"
+    - period: "September 2026 - Present"
+- الملف/المكوّن الذي يعرض قسم التعليم: `src/components/EducationSection.tsx`.
+  - لتغيير عرض أو ترتيب العناصر البصرية عدّل هذا المكون، لكن الأفضل تعديل البيانات في `src/lib/data.ts` فقط.
+- ملاحظة: تمت إزالة كلمة "Leadership" من عنوان قسم التعليم كما طُلِب؛ إن كان هناك حقول أخرى متعلقة بالـLeadership استخدمها خارج هذا القسم.
+
+## Hackathons (أين تضيف أو تعدل الـHackathons)
+
+- البيانات موجودة في: `src/lib/data.ts` — المصفوفة `hackathons`.
+  - كل مدخلة تتضمن عادة: `name`, `date`, `description`.
+  - المثال المُضاف:
+    - name: "Red Dev Hackathon"
+    - date: "August 2026"
+    - description: "Participated in the hackathon as part of a team."
+- المكون الذي يعرضها: `src/components/HackathonsSection.tsx`.
+  - لإضافة hackathon جديد: أضف كائنًا جديدًا إلى `hackathons` في `src/lib/data.ts`، ثم احفظ.
+  - لتغيير النص أو التاريخ، عدّل الحقول المناسبة في تلك المصفوفة.
+
+---
+
+(انتهت التعديلات التوضيحية الخاصة بتحميل الـCV والتعليم وHackathons.)
